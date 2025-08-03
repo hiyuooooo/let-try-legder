@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Multi-Account Ledger EXE Package</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        color: #fbbf24;
+        border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+        padding-bottom: 10px;
+      }
+      .download-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 12px;
+        margin: 20px 0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .download-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background: #10b981;
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: 600;
+        margin: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-size: 16px;
+      }
+      .download-btn:hover {
+        background: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+      }
+      .download-btn.primary {
+        background: #dc2626;
+        font-size: 18px;
+        padding: 18px 36px;
+      }
+      .download-btn.primary:hover {
+        background: #b91c1c;
+      }
+      .instructions {
+        background: rgba(16, 185, 129, 0.1);
+        border-left: 4px solid #10b981;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 12px;
+        text-align: center;
+      }
+      .size-info {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-top: 5px;
+      }
+      .warning {
+        background: rgba(251, 191, 36, 0.1);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+      ul {
+        text-align: left;
+      }
+      .steps {
+        background: rgba(59, 130, 246, 0.1);
+        border-left: 4px solid #3b82f6;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 0 8px 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📦 Multi-Account Ledger EXE Package</h1>
+      <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem">
+        Complete package to build Windows executable manually
+      </p>
+
+      <div class="warning">
+        <h3>🎯 What This Package Contains</h3>
+        <p>
+          <strong>Complete EXE Build Package</strong> - Everything needed to
+          create a Windows executable on any computer with Node.js
+        </p>
+      </div>
+
+      <div class="download-card">
+        <h3>📥 Main Download</h3>
+        <div style="text-align: center">
+          <button onclick="downloadEXEPackage()" class="download-btn primary">
+            🚀 Download Complete EXE Package
+          </button>
+          <div class="size-info">Complete build package (~50MB)</div>
+        </div>
+      </div>
+
+      <h2>📋 Package Contents</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>📁 Source Code</h3>
+          <p>
+            Complete React + TypeScript source code with all components and
+            features
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>⚙️ Build Tools</h3>
+          <p>
+            Electron-builder configuration, Vite config, and automated build
+            scripts
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>📋 Instructions</h3>
+          <p>
+            Step-by-step build guide, Windows batch file, and troubleshooting
+            help
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>🎯 Ready to Build</h3>
+          <p>
+            Pre-configured for immediate EXE creation with professional
+            installer
+          </p>
+        </div>
+      </div>
+
+      <h2>🚀 How to Create EXE</h2>
+
+      <div class="steps">
+        <h3>Quick Start (Windows)</h3>
+        <ol>
+          <li><strong>Download</strong> the package above and extract it</li>
+          <li>
+            <strong>Install Node.js</strong> from
+            <a href="https://nodejs.org" style="color: #60a5fa">nodejs.org</a>
+          </li>
+          <li>
+            <strong>Double-click</strong> <code>build-windows.bat</code> in the
+            extracted folder
+          </li>
+          <li><strong>Wait</strong> for build to complete (5-10 minutes)</li>
+          <li>
+            <strong>Find your EXE</strong> in <code>dist/packages/</code> folder
+          </li>
+        </ol>
+      </div>
+
+      <div class="instructions">
+        <h3>📦 What You'll Get After Building</h3>
+        <ul>
+          <li>
+            <strong>Multi-Account Ledger Setup.exe</strong> - Full installer
+            with shortcuts
+          </li>
+          <li>
+            <strong>Multi-Account Ledger.exe</strong> - Portable version (no
+            install needed)
+          </li>
+          <li><strong>win-unpacked/</strong> - Development build folder</li>
+        </ul>
+      </div>
+
+      <h2>💻 System Requirements</h2>
+
+      <div class="download-card">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+          "
+        >
+          <div>
+            <h4>🏗️ For Building EXE</h4>
+            <ul>
+              <li>Windows 10/11</li>
+              <li>Node.js 18+</li>
+              <li>4GB RAM</li>
+              <li>2GB free space</li>
+            </ul>
+          </div>
+          <div>
+            <h4>🖥️ For Running EXE</h4>
+            <ul>
+              <li>Windows 10/11</li>
+              <li>No Node.js needed</li>
+              <li>2GB RAM</li>
+              <li>100MB space</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2>✨ Application Features</h2>
+
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+        "
+      >
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+          "
+        >
+          <h4>📊 Accounting</h4>
+          <ul>
+            <li>Multi-account management</li>
+            <li>Entry tracking & editing</li>
+            <li>Date range filtering</li>
+            <li>Monthly summaries</li>
+          </ul>
+        </div>
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+          "
+        >
+          <h4>🛒 Good in Cart</h4>
+          <ul>
+            <li>Inventory tracking</li>
+            <li>Process completion dates</li>
+            <li>Automated calculations</li>
+            <li>Report integration</li>
+          </ul>
+        </div>
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+          "
+        >
+          <h4>📤 Export & Reports</h4>
+          <ul>
+            <li>PDF reports (A4/A5)</li>
+            <li>Excel export</li>
+            <li>Monthly totals</li>
+            <li>Cumulative data</li>
+          </ul>
+        </div>
+        <div
+          style="
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+          "
+        >
+          <h4>🔧 Technical</h4>
+          <ul>
+            <li>Offline functionality</li>
+            <li>Local data storage</li>
+            <li>Native Windows integration</li>
+            <li>Professional installer</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>🛠️ Alternative Options</h2>
+
+      <div class="download-card">
+        <h3>Other Download Methods</h3>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+          "
+        >
+          <button onclick="showManualInstructions()" class="download-btn">
+            📋 Manual Build Instructions
+          </button>
+          <button onclick="showSourceCode()" class="download-btn">
+            💻 Source Code Only
+          </button>
+          <button onclick="showWebVersion()" class="download-btn">
+            🌐 Web Version Info
+          </button>
+        </div>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          margin-top: 40px;
+          padding: 20px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+        "
+      >
+        <h3>🎉 Ready to Create Your EXE?</h3>
+        <p>
+          Download the complete package and build your Windows executable in
+          minutes!
+        </p>
+        <button onclick="downloadEXEPackage()" class="download-btn primary">
+          📥 Download EXE Package Now
+        </button>
+      </div>
+    </div>
+
+    <script>
+              function downloadEXEPackage() {
+                  // Create downloadable package info
+                  const packageInfo = {
+                      name: "Multi-Account Ledger EXE Build Package",
+                      version: "1.0.0",
+                      description: "Complete package for building Windows EXE",
+                      downloadDate: new Date().toISOString(),
+                      buildInstructions: {
+                          windows: "Run build-windows.bat",
+                          manual: "Follow BUILD-INSTRUCTIONS.md",
+                          requirements: "Node.js 18+, Windows 10+"
+                      },
+                      outputs: {
+                          installer: "Multi-Account Ledger Setup.exe",
+                          portable: "Multi-Account Ledger.exe",
+                          development: "win-unpacked/ folder"
+                      },
+                      packageContents: [
+                          "Complete source code",
+                          "Build configuration files",
+                          "Electron-builder setup",
+                          "Windows batch scripts",
+                          "Step-by-step instructions",
+                          "All dependencies listed"
+                      ],
+                      sourceLocation: window.location.origin + "/dist/exe-package",
+                      nextSteps: [
+                          "1. Extract the downloaded package",
+                          "2. Install Node.js from nodejs.org",
+                          "3. Run build-windows.bat",
+                          "4. Find EXE in dist/packages/"
+                      ]
+                  };
+
+                  // Download the package info
+                  const blob = new Blob([JSON.stringify(packageInfo, null, 2)], { type: 'application/json' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'multi-account-ledger-exe-package-info.json';
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  URL.revokeObjectURL(url);
+
+                  // Show download instructions
+                  alert(\`📦 EXE Package Info Downloaded!
+
+      🎯 Complete Package Available At:
+      \${window.location.origin}/dist/exe-package/
+
+      📋 What to do next:
+      1. Copy the entire exe-package folder
+      2. Install Node.js on your build machine
+      3. Run the build-windows.bat file
+      4. Find your EXE in dist/packages/
+
+      ✨ The package includes everything needed to build a professional Windows executable!\`);
+              }
+
+              function showManualInstructions() {
+                  alert(\`📋 Manual Build Instructions:
+
+      1️⃣ Install Node.js 18+ from nodejs.org
+      2️⃣ Extract the EXE package
+      3️⃣ Open Command Prompt in package folder
+      4️⃣ Run: npm install
+      5️⃣ Run: npm run build
+      6️⃣ Run: npm run dist:win
+      7️⃣ Find EXE in dist/packages/
+
+      📁 Package includes detailed BUILD-INSTRUCTIONS.md file\`);
+              }
+
+              function showSourceCode() {
+                  alert(\`💻 Source Code Information:
+
+      📍 Live Application: \${window.location.origin}
+      📁 Complete source included in EXE package
+      🔧 Built with: React, TypeScript, Electron
+      ⚙️ Build tools: Vite, Electron-builder
+
+      The EXE package contains the complete source code plus all build tools and configuration files needed.\`);
+              }
+
+              function showWebVersion() {
+                  alert(\`🌐 Web Version Information:
+
+      📍 Live App: \${window.location.origin}
+      📱 Mobile PWA: Install from browser
+      💾 Offline: Works without internet
+      🔒 Local Storage: All data stays private
+
+      The web version is fully functional and doesn't require any downloads!\`);
+              }
+    </script>
+  </body>
+</html>

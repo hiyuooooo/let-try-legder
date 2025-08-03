@@ -1,0 +1,60 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main background -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient)" stroke="#1e40af" stroke-width="8"/>
+  
+  <!-- Ledger book shape -->
+  <rect x="120" y="140" width="272" height="232" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- Book spine -->
+  <rect x="120" y="140" width="24" height="232" rx="12" fill="#f3f4f6"/>
+  <rect x="120" y="140" width="8" height="232" rx="4" fill="#d1d5db"/>
+  
+  <!-- Horizontal lines (ledger lines) -->
+  <line x1="160" y1="180" x2="372" y2="180" stroke="#e5e7eb" stroke-width="2"/>
+  <line x1="160" y1="210" x2="372" y2="210" stroke="#e5e7eb" stroke-width="2"/>
+  <line x1="160" y1="240" x2="372" y2="240" stroke="#e5e7eb" stroke-width="2"/>
+  <line x1="160" y1="270" x2="372" y2="270" stroke="#e5e7eb" stroke-width="2"/>
+  <line x1="160" y1="300" x2="372" y2="300" stroke="#e5e7eb" stroke-width="2"/>
+  <line x1="160" y1="330" x2="372" y2="330" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- Vertical line (margin) -->
+  <line x1="200" y1="160" x2="200" y2="352" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- Sample entries with colors -->
+  <circle cx="180" cy="195" r="4" fill="#10b981"/>
+  <rect x="210" y="191" width="80" height="8" rx="2" fill="#10b981" opacity="0.3"/>
+  <rect x="300" y="191" width="60" height="8" rx="2" fill="#6b7280" opacity="0.2"/>
+  
+  <circle cx="180" cy="225" r="4" fill="#ef4444"/>
+  <rect x="210" y="221" width="70" height="8" rx="2" fill="#ef4444" opacity="0.3"/>
+  <rect x="290" y="221" width="70" height="8" rx="2" fill="#6b7280" opacity="0.2"/>
+  
+  <circle cx="180" cy="255" r="4" fill="#10b981"/>
+  <rect x="210" y="251" width="90" height="8" rx="2" fill="#10b981" opacity="0.3"/>
+  <rect x="310" y="251" width="50" height="8" rx="2" fill="#6b7280" opacity="0.2"/>
+  
+  <!-- Calculator/numbers icon -->
+  <rect x="320" y="100" width="60" height="80" rx="8" fill="#374151"/>
+  <rect x="328" y="108" width="44" height="20" rx="4" fill="#1f2937"/>
+  <text x="350" y="122" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="12">123</text>
+  
+  <!-- Calculator buttons -->
+  <rect x="332" y="135" width="12" height="8" rx="2" fill="#4b5563"/>
+  <rect x="348" y="135" width="12" height="8" rx="2" fill="#4b5563"/>
+  <rect x="364" y="135" width="12" height="8" rx="2" fill="#4b5563"/>
+  
+  <rect x="332" y="147" width="12" height="8" rx="2" fill="#4b5563"/>
+  <rect x="348" y="147" width="12" height="8" rx="2" fill="#4b5563"/>
+  <rect x="364" y="147" width="12" height="8" rx="2" fill="#4b5563"/>
+  
+  <rect x="332" y="159" width="12" height="8" rx="2" fill="#10b981"/>
+  <rect x="348" y="159" width="28" height="8" rx="2" fill="#2563eb"/>
+</svg>

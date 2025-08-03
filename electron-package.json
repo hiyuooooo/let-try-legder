@@ -1,0 +1,7 @@
+{
+  "name": "fusion-starter-electron",
+  "version": "1.0.0",
+  "description": "Multi-Account Ledger - Desktop App",
+  "main": "electron.cjs",
+  "author": "Multi-Account Ledger Team"
+}
