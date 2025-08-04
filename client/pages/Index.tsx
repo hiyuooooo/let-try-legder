@@ -408,7 +408,7 @@ export default function Index() {
       cash: 0,
       total: startX,
       profitLoss: "Good in Cart",
-      notes: "गाड़ी म���ं सामान",
+      notes: "गाड़ी म���ं सामा���",
       isGoodInCart: true,
     });
 
@@ -589,6 +589,50 @@ export default function Index() {
       netProfitLoss,
       netType,
       entriesCount: entries.length,
+    };
+  };
+
+  // Calculate summary for selected month only (not cumulative)
+  const calculateMonthlySummary = (selectedMonth: string): LedgerSummary => {
+    if (!selectedMonth || !currentAccount) {
+      return calculateSummary([]);
+    }
+
+    const [year, month] = selectedMonth.split("-");
+    const yearNum = parseInt(year);
+    const monthNum = parseInt(month) - 1; // 0-indexed
+
+    // Get entries only for the selected month
+    const monthEntries = getCurrentAccountEntries().filter(
+      (entry) =>
+        entry.date.getFullYear() === yearNum &&
+        entry.date.getMonth() === monthNum,
+    );
+
+    const totalBills = monthEntries.reduce((sum, entry) => sum + entry.bill, 0);
+    const totalCash = monthEntries.reduce((sum, entry) => sum + entry.cash, 0);
+    const netProfitLoss = totalBills - totalCash;
+    const netType =
+      netProfitLoss < 0 ? "Profit" : netProfitLoss > 0 ? "Loss" : "Break-even";
+
+    // Get previous month's cumulative total
+    const previousTotal = getCumulativeNetTotal(
+      appData,
+      yearNum,
+      monthNum - 1,
+      currentAccount.id,
+    );
+
+    return {
+      totalBills,
+      totalCash,
+      netProfitLoss,
+      netType,
+      entriesCount: monthEntries.length,
+      previousTotal: previousTotal,
+      currentMonthTotal: netProfitLoss,
+      cumulativeTotal: previousTotal + netProfitLoss,
+      isMonthlyView: true,
     };
   };
 
@@ -3272,7 +3316,7 @@ export default function Index() {
                     notes: e.target.value,
                   }))
                 }
-                placeholder="ग���ड़ी में सामान"
+                placeholder="ग���ड़ी में ���ामान"
               />
             </div>
             <div className="p-3 bg-gray-50 rounded-md">
