@@ -117,6 +117,38 @@ export const getCumulativeNetTotal = (
   return cumulativeTotal;
 };
 
+// Get cumulative total from ALL previous months across ALL years up to (but not including) specified month
+export const getAllPreviousMonthsTotal = (
+  appData: AppData,
+  year: number,
+  month: number,
+  accountId: string,
+): number => {
+  let cumulativeTotal = 0;
+
+  // Get all unique year-month combinations for this account
+  const uniqueMonths = new Set<string>();
+  appData.ledgerEntries
+    .filter((entry) => entry.accountId === accountId)
+    .forEach((entry) => {
+      const entryYear = entry.date.getFullYear();
+      const entryMonth = entry.date.getMonth();
+
+      // Only include months before the specified month
+      if (entryYear < year || (entryYear === year && entryMonth < month)) {
+        uniqueMonths.add(`${entryYear}-${entryMonth}`);
+      }
+    });
+
+  // Calculate total for all previous months
+  Array.from(uniqueMonths).forEach((monthKey) => {
+    const [monthYear, monthIndex] = monthKey.split("-").map(Number);
+    cumulativeTotal += getMonthlyNetTotal(appData, monthYear, monthIndex, accountId);
+  });
+
+  return cumulativeTotal;
+};
+
 // Update all monthly totals for an account when entries change
 export const updateAllMonthlyTotalsForAccount = (
   appData: AppData,
