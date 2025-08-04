@@ -292,7 +292,7 @@ export default function Index() {
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [keyboardNavEnabled, activeTab, formFieldFocus, handleSaveEntry]);
+  }, [keyboardNavEnabled, activeTab, formFieldFocus]);
 
   // Helper functions
   const formatDateForDisplay = (date: Date): string => {
@@ -2057,7 +2057,7 @@ export default function Index() {
                   <ul className="text-sm text-blue-700 space-y-1">
                     <li>• Date format must be dd/mm/yyyy</li>
                     <li>• Required columns: Date, Bill, Cash</li>
-                    <li>��� Bill and Cash must be positive numbers</li>
+                    <li>• Bill and Cash must be positive numbers</li>
                     <li>• Notes column is optional</li>
                     <li>• First row should contain column headers</li>
                   </ul>
