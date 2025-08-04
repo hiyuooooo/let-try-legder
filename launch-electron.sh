@@ -8,12 +8,12 @@ if [ -d "dist/packages/linux-unpacked" ]; then
     echo "✅ Linux Electron app found"
     echo "🚀 Launching Multi-Account Ledger..."
     cd "dist/packages/linux-unpacked"
-    ./"Multi-Account Ledger"
+    ./fusion-starter
 elif [ -d "dist/packages/win-unpacked" ]; then
     echo "✅ Windows Electron app found"
     echo "🚀 Launching Multi-Account Ledger..."
     cd "dist/packages/win-unpacked"
-    ./"Multi-Account Ledger.exe"
+    ./fusion-starter.exe
 else
     echo "❌ No Electron app found. Please run: npm run pack"
     exit 1
