@@ -1256,22 +1256,6 @@ export default function Index() {
                       >
                         Today
                       </Button>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          setFormData((prev) => ({
-                            ...prev,
-                            date: getCurrentDateString(),
-                          }));
-                          setUseCurrentDate(false);
-                        }}
-                        className="whitespace-nowrap"
-                        title="Set current date"
-                      >
-                        Total
-                      </Button>
                     </div>
                   </div>
                   <div className="space-y-2">
