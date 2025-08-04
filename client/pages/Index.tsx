@@ -247,11 +247,7 @@ export default function Index() {
             break;
           case "Enter":
             event.preventDefault();
-            // Trigger form submission by finding and clicking the submit button
-            const submitButton = document.querySelector('button[type="button"]:has-text("Add Entry")') as HTMLButtonElement;
-            if (submitButton) {
-              submitButton.click();
-            }
+            handleSaveEntry();
             break;
         }
         return;
@@ -262,11 +258,7 @@ export default function Index() {
         // Only allow Enter to submit entry
         if (event.key === "Enter" && activeTab === "ledger") {
           event.preventDefault();
-          // Trigger form submission by finding and clicking the submit button
-          const submitButton = document.querySelector('button[type="button"]:has-text("Add Entry")') as HTMLButtonElement;
-          if (submitButton) {
-            submitButton.click();
-          }
+          handleSaveEntry();
         }
         return;
       }
@@ -292,11 +284,7 @@ export default function Index() {
         case "Enter":
           if (activeTab === "ledger") {
             event.preventDefault();
-            // Trigger form submission by finding and clicking the submit button
-            const submitButton = document.querySelector('button[type="button"]:has-text("Add Entry")') as HTMLButtonElement;
-            if (submitButton) {
-              submitButton.click();
-            }
+            handleSaveEntry();
           }
           break;
       }
