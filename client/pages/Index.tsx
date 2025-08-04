@@ -1436,8 +1436,8 @@ export default function Index() {
                       className={cn(
                         "px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-sm font-medium",
                         formData.bill && formData.cash
-                          ? parseFloat(formData.bill) -
-                              parseFloat(formData.cash) <
+                          ? parseFloat(removeCommas(formData.bill)) -
+                              parseFloat(removeCommas(formData.cash)) <
                             0
                             ? "text-green-600"
                             : "text-red-600"
@@ -1446,8 +1446,8 @@ export default function Index() {
                     >
                       {formData.bill && formData.cash
                         ? formatCurrency(
-                            parseFloat(formData.bill) -
-                              parseFloat(formData.cash),
+                            parseFloat(removeCommas(formData.bill)) -
+                              parseFloat(removeCommas(formData.cash)),
                           )
                         : "₹0"}
                     </div>
