@@ -1053,8 +1053,8 @@ export default function Index() {
 
   const filteredEntries = getFilteredEntries();
   const summary =
-    filter.type === "month"
-      ? calculateCumulativeSummary()
+    filter.type === "month" && filterMonth
+      ? calculateMonthlySummary(filterMonth)
       : calculateSummary(filteredEntries);
 
   return (
