@@ -97,6 +97,7 @@ import {
   getMonthlyNetTotal,
   updateAllMonthlyTotalsForAccount,
   cleanupOldMonthlyTotals,
+  getAllPreviousMonthsTotal,
 } from "@/lib/monthly-totals";
 
 export default function Index() {
