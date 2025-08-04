@@ -994,7 +994,7 @@ export default function Index() {
           total: row.total,
           profitLoss:
             row.profitLoss === "Good in Cart"
-              ? "गाड़ी में सामान"
+              ? "गाड़ी में सा���ान"
               : row.profitLoss === "Process Complete"
                 ? "Process Complete"
                 : row.profitLoss,
@@ -3255,22 +3255,13 @@ export default function Index() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* Enable/Disable Shortcuts */}
-              <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
+              {/* Shortcuts Info */}
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <div>
-                  <h3 className="font-medium text-blue-800">Enable Keyboard Navigation</h3>
+                  <h3 className="font-medium text-blue-800">Keyboard Shortcuts Active</h3>
                   <p className="text-sm text-blue-600">
-                    Use arrow keys and number keys to navigate between tabs
+                    Use Ctrl+Arrow keys for form navigation and number keys for tab switching
                   </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant={keyboardNavEnabled ? "default" : "outline"}
-                    onClick={() => setKeyboardNavEnabled(!keyboardNavEnabled)}
-                    className={keyboardNavEnabled ? "bg-green-600 hover:bg-green-700" : ""}
-                  >
-                    {keyboardNavEnabled ? "Enabled" : "Disabled"}
-                  </Button>
                 </div>
               </div>
 
