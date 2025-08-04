@@ -956,8 +956,8 @@ export default function Index() {
         // Regular ledger export
         const filteredEntries = getFilteredEntries();
         const summary =
-          filter.type === "month"
-            ? calculateCumulativeSummary()
+          filter.type === "month" && filterMonth
+            ? calculateMonthlySummary(filterMonth)
             : calculateSummary(filteredEntries);
 
         const filterInfo =
