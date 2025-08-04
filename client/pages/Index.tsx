@@ -320,7 +320,7 @@ export default function Index() {
     }).format(amount);
   };
 
-  const handleSaveEntry = useCallback(() => {
+  const handleSaveEntry = () => {
     if (!currentAccount) return;
 
     const date = parseDateString(formData.date);
@@ -376,17 +376,7 @@ export default function Index() {
     });
     setEditingEntry(null);
     setIsEditDialogOpen(false);
-  }, [
-    currentAccount,
-    formData,
-    editingEntry,
-    appData,
-    setLastEnteredDate,
-    setFormData,
-    setEditingEntry,
-    setIsEditDialogOpen,
-    setAppData,
-  ]);
+  };
 
   // Account management functions
   const createAccount = () => {
