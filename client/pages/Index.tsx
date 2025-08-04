@@ -3449,7 +3449,7 @@ export default function Index() {
                 className={cn(
                   "text-lg font-semibold",
                   formData.bill && formData.cash
-                    ? parseFloat(formData.bill) - parseFloat(formData.cash) < 0
+                    ? parseFloat(removeCommas(formData.bill)) - parseFloat(removeCommas(formData.cash)) < 0
                       ? "text-green-600"
                       : "text-red-600"
                     : "text-gray-500",
