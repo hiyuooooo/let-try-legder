@@ -146,7 +146,9 @@ export default function Index() {
     notes: "",
   });
   const [useCurrentDate, setUseCurrentDate] = useState(false);
-  const [lastEnteredDate, setLastEnteredDate] = useState(getCurrentDateString());
+  const [lastEnteredDate, setLastEnteredDate] = useState(
+    getCurrentDateString(),
+  );
 
   // Filter state
   const [filter, setFilter] = useState<FilterOptions>({

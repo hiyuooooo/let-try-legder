@@ -143,7 +143,12 @@ export const getAllPreviousMonthsTotal = (
   // Calculate total for all previous months
   Array.from(uniqueMonths).forEach((monthKey) => {
     const [monthYear, monthIndex] = monthKey.split("-").map(Number);
-    cumulativeTotal += getMonthlyNetTotal(appData, monthYear, monthIndex, accountId);
+    cumulativeTotal += getMonthlyNetTotal(
+      appData,
+      monthYear,
+      monthIndex,
+      accountId,
+    );
   });
 
   return cumulativeTotal;
