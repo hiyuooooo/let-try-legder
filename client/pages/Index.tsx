@@ -3272,86 +3272,46 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* Arrow Keys Configuration */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-800">Arrow Key Navigation</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
-                      <Label className="font-medium">Left Arrow (←)</Label>
-                      <Select
-                        value={shortcuts.leftArrow}
-                        onValueChange={(value) =>
-                          setShortcuts((prev) => ({ ...prev, leftArrow: value }))
-                        }
-                      >
-                        <SelectTrigger className="w-32">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="prev">Previous Tab</SelectItem>
-                          <SelectItem value="disabled">Disabled</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
-                      <Label className="font-medium">Right Arrow (→)</Label>
-                      <Select
-                        value={shortcuts.rightArrow}
-                        onValueChange={(value) =>
-                          setShortcuts((prev) => ({ ...prev, rightArrow: value }))
-                        }
-                      >
-                        <SelectTrigger className="w-32">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="next">Next Tab</SelectItem>
-                          <SelectItem value="disabled">Disabled</SelectItem>
-                        </SelectContent>
-                      </Select>
+              {/* Essential Shortcuts */}
+              <div className="space-y-4">
+                <h3 className="font-semibold text-gray-800">Essential Keyboard Shortcuts</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <h4 className="font-medium text-gray-700 mb-2">Tab Navigation</h4>
+                    <div className="space-y-1 text-sm text-gray-600">
+                      <div className="flex justify-between">
+                        <span>Key 1:</span>
+                        <span className="font-mono">Ledger</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Key 2:</span>
+                        <span className="font-mono">Good in Cart</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Key 3:</span>
+                        <span className="font-mono">Reports</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Key 4:</span>
+                        <span className="font-mono">Shortcuts</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Number Keys Configuration */}
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-800">Number Key Shortcuts</h3>
-                  <div className="space-y-2">
-                    {[
-                      { key: "key1", label: "Key 1", default: "ledger" },
-                      { key: "key2", label: "Key 2", default: "goodInCart" },
-                      { key: "key3", label: "Key 3", default: "reports" },
-                      { key: "key4", label: "Key 4", default: "accounts" },
-                      { key: "key5", label: "Key 5", default: "import" },
-                      { key: "key6", label: "Key 6", default: "backups" },
-                      { key: "key7", label: "Key 7", default: "netTotalMonth" },
-                      { key: "key8", label: "Key 8", default: "shortcuts" }
-                    ].map(({ key, label }) => (
-                      <div key={key} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
-                        <Label className="text-sm font-medium">{label}</Label>
-                        <Select
-                          value={shortcuts[key as keyof typeof shortcuts]}
-                          onValueChange={(value) =>
-                            setShortcuts((prev) => ({ ...prev, [key]: value }))
-                          }
-                        >
-                          <SelectTrigger className="w-36">
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="ledger">Ledger</SelectItem>
-                            <SelectItem value="goodInCart">Good in Cart</SelectItem>
-                            <SelectItem value="reports">Reports</SelectItem>
-                            <SelectItem value="accounts">Accounts</SelectItem>
-                            <SelectItem value="import">Import</SelectItem>
-                            <SelectItem value="backups">Backups</SelectItem>
-                            <SelectItem value="netTotalMonth">Net Total Month</SelectItem>
-                            <SelectItem value="shortcuts">Shortcuts</SelectItem>
-                          </SelectContent>
-                        </Select>
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <h4 className="font-medium text-gray-700 mb-2">Entry Form (Ledger Tab)</h4>
+                    <div className="space-y-1 text-sm text-gray-600">
+                      <div className="flex justify-between">
+                        <span>Enter:</span>
+                        <span className="font-mono">Submit Entry</span>
                       </div>
-                    ))}
+                      <div className="flex justify-between">
+                        <span>← →:</span>
+                        <span className="font-mono">Navigate Fields</span>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2">
+                        Field Order: Date → Bill → Cash → Notes
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
