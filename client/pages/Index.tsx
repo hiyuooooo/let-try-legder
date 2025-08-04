@@ -607,7 +607,7 @@ export default function Index() {
       cash: endX,
       total: -endX,
       profitLoss: "Process Complete",
-      notes: "Process Complete - गाड़ी में सामान",
+      notes: "Process Complete - गाड़ी में साम��न",
       isGoodInCart: true,
     });
 
@@ -1379,15 +1379,22 @@ export default function Index() {
                     </Label>
                     <Input
                       id="bill"
-                      type="number"
+                      type="text"
                       placeholder="0"
                       value={formData.bill}
-                      onChange={(e) =>
+                      onChange={(e) => {
+                        const formattedValue = formatNumberWithCommas(e.target.value);
                         setFormData((prev) => ({
                           ...prev,
-                          bill: e.target.value,
-                        }))
-                      }
+                          bill: formattedValue,
+                        }));
+                      }}
+                      onKeyPress={(e) => {
+                        // Only allow numbers, backspace, delete, and navigation keys
+                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                          e.preventDefault();
+                        }
+                      }}
                       onFocus={() => setFormFieldFocus(1)}
                       className="border-blue-200 focus:border-blue-400 focus:ring-blue-200"
                     />
@@ -3538,7 +3545,7 @@ export default function Index() {
                 setGoodInCartForm({
                   date: getCurrentDateString(),
                   value: "",
-                  notes: "गाड़ी म���ं सामान",
+                  notes: "गाड़ी म����ं सामान",
                 });
               }}
             >
