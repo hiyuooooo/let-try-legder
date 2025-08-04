@@ -145,6 +145,7 @@ export default function Index() {
     notes: "",
   });
   const [useCurrentDate, setUseCurrentDate] = useState(false);
+  const [lastEnteredDate, setLastEnteredDate] = useState(getCurrentDateString());
 
   // Filter state
   const [filter, setFilter] = useState<FilterOptions>({
@@ -408,7 +409,7 @@ export default function Index() {
       cash: 0,
       total: startX,
       profitLoss: "Good in Cart",
-      notes: "गाड़ी म���ं सामा���",
+      notes: "गाड़ी म���ं सामान",
       isGoodInCart: true,
     });
 
@@ -2652,7 +2653,7 @@ export default function Index() {
                               <TableCell className="text-center">
                                 {row.profitLoss === "Good in Cart" ? (
                                   <Badge className="bg-blue-100 text-blue-800 border-blue-200 italic">
-                                    गाड़ी में सामान
+                                    गाड़ी ��ें सामान
                                   </Badge>
                                 ) : row.profitLoss === "Profit" ? (
                                   <Badge className="bg-green-100 text-green-800 border-green-200">
@@ -3316,7 +3317,7 @@ export default function Index() {
                     notes: e.target.value,
                   }))
                 }
-                placeholder="ग���ड़ी में ���ामान"
+                placeholder="ग���ड़ी में सामान"
               />
             </div>
             <div className="p-3 bg-gray-50 rounded-md">
