@@ -247,7 +247,11 @@ export default function Index() {
             break;
           case "Enter":
             event.preventDefault();
-            handleSaveEntry();
+            // Trigger form submission by finding and clicking the submit button
+            const submitButton = document.querySelector('button[type="button"]:has-text("Add Entry")') as HTMLButtonElement;
+            if (submitButton) {
+              submitButton.click();
+            }
             break;
         }
         return;
@@ -258,7 +262,11 @@ export default function Index() {
         // Only allow Enter to submit entry
         if (event.key === "Enter" && activeTab === "ledger") {
           event.preventDefault();
-          handleSaveEntry();
+          // Trigger form submission by finding and clicking the submit button
+          const submitButton = document.querySelector('button[type="button"]:has-text("Add Entry")') as HTMLButtonElement;
+          if (submitButton) {
+            submitButton.click();
+          }
         }
         return;
       }
@@ -284,7 +292,11 @@ export default function Index() {
         case "Enter":
           if (activeTab === "ledger") {
             event.preventDefault();
-            handleSaveEntry();
+            // Trigger form submission by finding and clicking the submit button
+            const submitButton = document.querySelector('button[type="button"]:has-text("Add Entry")') as HTMLButtonElement;
+            if (submitButton) {
+              submitButton.click();
+            }
           }
           break;
       }
@@ -3526,7 +3538,7 @@ export default function Index() {
                 setGoodInCartForm({
                   date: getCurrentDateString(),
                   value: "",
-                  notes: "गाड़ी में सामान",
+                  notes: "गाड़ी म���ं सामान",
                 });
               }}
             >
