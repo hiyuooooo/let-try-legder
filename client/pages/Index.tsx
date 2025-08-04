@@ -3320,9 +3320,10 @@ export default function Index() {
               <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                 <h4 className="font-medium text-yellow-800 mb-2">How to Use Keyboard Shortcuts</h4>
                 <ul className="text-sm text-yellow-700 space-y-1">
-                  <li>• <strong>Arrow Keys:</strong> Navigate between tabs sequentially</li>
-                  <li>• <strong>Number Keys (1-8):</strong> Jump directly to configured tabs</li>
-                  <li>• <strong>Note:</strong> Shortcuts are disabled when typing in input fields</li>
+                  <li>• <strong>Number Keys (1-4):</strong> Jump directly to main tabs</li>
+                  <li>• <strong>Enter Key:</strong> Submit entry when in Ledger tab</li>
+                  <li>• <strong>Arrow Keys (← →):</strong> Navigate between form fields in Ledger</li>
+                  <li>• <strong>Auto-disable:</strong> Form navigation only works in entry fields</li>
                   <li>• <strong>Status:</strong> {keyboardNavEnabled ?
                     <span className="text-green-600 font-semibold">Keyboard navigation is ACTIVE</span> :
                     <span className="text-red-600 font-semibold">Keyboard navigation is DISABLED</span>}
