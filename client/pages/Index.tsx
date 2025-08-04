@@ -1322,12 +1322,20 @@ export default function Index() {
                         type="text"
                         placeholder="25/01/2024"
                         value={formData.date}
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          // Only allow numbers and forward slashes for date
+                          const value = e.target.value.replace(/[^0-9/]/g, '');
                           setFormData((prev) => ({
                             ...prev,
-                            date: e.target.value,
-                          }))
-                        }
+                            date: value,
+                          }));
+                        }}
+                        onKeyPress={(e) => {
+                          // Prevent non-numeric characters except forward slash
+                          if (!/[0-9/]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                            e.preventDefault();
+                          }
+                        }}
                         onFocus={() => setFormFieldFocus(0)}
                         className="border-blue-200 focus:border-blue-400 focus:ring-blue-200"
                         disabled={useCurrentDate}
@@ -3499,7 +3507,7 @@ export default function Index() {
                     notes: e.target.value,
                   }))
                 }
-                placeholder="ग���ड़ी ���ें सामान"
+                placeholder="ग���ड़ी में सामान"
               />
             </div>
             <div className="p-3 bg-gray-50 rounded-md">
