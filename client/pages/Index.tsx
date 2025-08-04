@@ -1352,7 +1352,10 @@ export default function Index() {
                           value={formData.date}
                           onChange={(e) => {
                             // Only allow numbers and forward slashes for date
-                            const value = e.target.value.replace(/[^0-9/]/g, "");
+                            const value = e.target.value.replace(
+                              /[^0-9/]/g,
+                              "",
+                            );
                             setFormData((prev) => ({
                               ...prev,
                               date: value,
@@ -1382,7 +1385,9 @@ export default function Index() {
                             size="sm"
                             onClick={() => {
                               if (!useCurrentDate) {
-                                const currentDate = parseDateString(formData.date);
+                                const currentDate = parseDateString(
+                                  formData.date,
+                                );
                                 if (currentDate) {
                                   const newDate = new Date(currentDate);
                                   newDate.setDate(newDate.getDate() + 1);
@@ -1396,8 +1401,12 @@ export default function Index() {
                             className="h-4 w-6 p-0 hover:bg-blue-50"
                             disabled={useCurrentDate}
                           >
-                            <svg className="h-3 w-3 text-blue-600" fill="currentColor" viewBox="0 0 12 12">
-                              <path d="M6 3l3 3H3l3-3z"/>
+                            <svg
+                              className="h-3 w-3 text-blue-600"
+                              fill="currentColor"
+                              viewBox="0 0 12 12"
+                            >
+                              <path d="M6 3l3 3H3l3-3z" />
                             </svg>
                           </Button>
                           <Button
@@ -1406,7 +1415,9 @@ export default function Index() {
                             size="sm"
                             onClick={() => {
                               if (!useCurrentDate) {
-                                const currentDate = parseDateString(formData.date);
+                                const currentDate = parseDateString(
+                                  formData.date,
+                                );
                                 if (currentDate) {
                                   const newDate = new Date(currentDate);
                                   newDate.setDate(newDate.getDate() - 1);
@@ -1420,8 +1431,12 @@ export default function Index() {
                             className="h-4 w-6 p-0 hover:bg-blue-50"
                             disabled={useCurrentDate}
                           >
-                            <svg className="h-3 w-3 text-blue-600" fill="currentColor" viewBox="0 0 12 12">
-                              <path d="M6 9L3 6h6l-3 3z"/>
+                            <svg
+                              className="h-3 w-3 text-blue-600"
+                              fill="currentColor"
+                              viewBox="0 0 12 12"
+                            >
+                              <path d="M6 9L3 6h6l-3 3z" />
                             </svg>
                           </Button>
                         </div>
