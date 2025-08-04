@@ -1208,6 +1208,14 @@ export default function Index() {
               <Calendar className="h-4 w-4" />
               Net Total Month
             </Button>
+            <Button
+              variant={activeTab === "shortcuts" ? "default" : "ghost"}
+              onClick={() => setActiveTab("shortcuts")}
+              className="flex items-center gap-2"
+            >
+              <Settings className="h-4 w-4" />
+              Shortcuts
+            </Button>
           </div>
         </div>
       </div>
