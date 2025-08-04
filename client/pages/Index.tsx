@@ -222,65 +222,77 @@ export default function Index() {
     if (!keyboardNavEnabled) return;
 
     const handleKeyPress = (event: KeyboardEvent) => {
-      // Prevent shortcuts when typing in input fields
-      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+      // Handle form field navigation when in Add Entry tab
+      if (activeTab === "ledger" && (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) {
+        const formFields = ["date", "bill", "cash", "notes"];
+
+        switch (event.key) {
+          case "ArrowLeft":
+            event.preventDefault();
+            if (formFieldFocus > 0) {
+              const newFocus = formFieldFocus - 1;
+              setFormFieldFocus(newFocus);
+              const element = document.getElementById(formFields[newFocus]);
+              element?.focus();
+            }
+            break;
+          case "ArrowRight":
+            event.preventDefault();
+            if (formFieldFocus < formFields.length - 1) {
+              const newFocus = formFieldFocus + 1;
+              setFormFieldFocus(newFocus);
+              const element = document.getElementById(formFields[newFocus]);
+              element?.focus();
+            }
+            break;
+          case "Enter":
+            event.preventDefault();
+            handleSaveEntry();
+            break;
+        }
         return;
       }
 
-      const tabs = ["ledger", "goodInCart", "reports", "accounts", "import", "backups", "netTotalMonth", "shortcuts"];
-      const currentIndex = tabs.indexOf(activeTab);
+      // Global shortcuts when not in form fields
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+        // Only allow Enter to submit entry
+        if (event.key === "Enter" && activeTab === "ledger") {
+          event.preventDefault();
+          handleSaveEntry();
+        }
+        return;
+      }
 
+      // Tab navigation shortcuts
       switch (event.key) {
-        case "ArrowLeft":
-          event.preventDefault();
-          if (shortcuts.leftArrow === "prev" && currentIndex > 0) {
-            setActiveTab(tabs[currentIndex - 1] as typeof activeTab);
-          }
-          break;
-        case "ArrowRight":
-          event.preventDefault();
-          if (shortcuts.rightArrow === "next" && currentIndex < tabs.length - 1) {
-            setActiveTab(tabs[currentIndex + 1] as typeof activeTab);
-          }
-          break;
         case "1":
           event.preventDefault();
-          setActiveTab(shortcuts.key1 as typeof activeTab);
+          setActiveTab("ledger");
           break;
         case "2":
           event.preventDefault();
-          setActiveTab(shortcuts.key2 as typeof activeTab);
+          setActiveTab("goodInCart");
           break;
         case "3":
           event.preventDefault();
-          setActiveTab(shortcuts.key3 as typeof activeTab);
+          setActiveTab("reports");
           break;
         case "4":
           event.preventDefault();
-          setActiveTab(shortcuts.key4 as typeof activeTab);
+          setActiveTab("shortcuts");
           break;
-        case "5":
-          event.preventDefault();
-          setActiveTab(shortcuts.key5 as typeof activeTab);
-          break;
-        case "6":
-          event.preventDefault();
-          setActiveTab(shortcuts.key6 as typeof activeTab);
-          break;
-        case "7":
-          event.preventDefault();
-          setActiveTab(shortcuts.key7 as typeof activeTab);
-          break;
-        case "8":
-          event.preventDefault();
-          setActiveTab(shortcuts.key8 as typeof activeTab);
+        case "Enter":
+          if (activeTab === "ledger") {
+            event.preventDefault();
+            handleSaveEntry();
+          }
           break;
       }
     };
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [keyboardNavEnabled, shortcuts, activeTab]);
+  }, [keyboardNavEnabled, activeTab, formFieldFocus, handleSaveEntry]);
 
   // Helper functions
   const formatDateForDisplay = (date: Date): string => {
