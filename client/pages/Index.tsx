@@ -1389,6 +1389,7 @@ export default function Index() {
                           cash: e.target.value,
                         }))
                       }
+                      onFocus={() => setFormFieldFocus(2)}
                       className="border-blue-200 focus:border-blue-400 focus:ring-blue-200"
                     />
                   </div>
