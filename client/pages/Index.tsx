@@ -152,7 +152,6 @@ export default function Index() {
   );
 
   // Shortcuts state
-  const [keyboardNavEnabled, setKeyboardNavEnabled] = useState(false);
   const [formFieldFocus, setFormFieldFocus] = useState(0); // 0: date, 1: bill, 2: cash, 3: notes
 
   // Filter state
