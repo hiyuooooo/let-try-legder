@@ -97,6 +97,7 @@ import {
   getMonthlyNetTotal,
   updateAllMonthlyTotalsForAccount,
   cleanupOldMonthlyTotals,
+  getAllPreviousMonthsTotal,
 } from "@/lib/monthly-totals";
 
 export default function Index() {
@@ -145,6 +146,9 @@ export default function Index() {
     notes: "",
   });
   const [useCurrentDate, setUseCurrentDate] = useState(false);
+  const [lastEnteredDate, setLastEnteredDate] = useState(
+    getCurrentDateString(),
+  );
 
   // Filter state
   const [filter, setFilter] = useState<FilterOptions>({
@@ -592,6 +596,50 @@ export default function Index() {
     };
   };
 
+  // Calculate summary for selected month only (not cumulative)
+  const calculateMonthlySummary = (selectedMonth: string): LedgerSummary => {
+    if (!selectedMonth || !currentAccount) {
+      return calculateSummary([]);
+    }
+
+    const [year, month] = selectedMonth.split("-");
+    const yearNum = parseInt(year);
+    const monthNum = parseInt(month) - 1; // 0-indexed
+
+    // Get entries only for the selected month
+    const monthEntries = getCurrentAccountEntries().filter(
+      (entry) =>
+        entry.date.getFullYear() === yearNum &&
+        entry.date.getMonth() === monthNum,
+    );
+
+    const totalBills = monthEntries.reduce((sum, entry) => sum + entry.bill, 0);
+    const totalCash = monthEntries.reduce((sum, entry) => sum + entry.cash, 0);
+    const netProfitLoss = totalBills - totalCash;
+    const netType =
+      netProfitLoss < 0 ? "Profit" : netProfitLoss > 0 ? "Loss" : "Break-even";
+
+    // Get ALL previous months total (across all years)
+    const previousTotal = getAllPreviousMonthsTotal(
+      appData,
+      yearNum,
+      monthNum,
+      currentAccount.id,
+    );
+
+    return {
+      totalBills,
+      totalCash,
+      netProfitLoss,
+      netType,
+      entriesCount: monthEntries.length,
+      previousTotal: previousTotal,
+      currentMonthTotal: netProfitLoss,
+      cumulativeTotal: previousTotal + netProfitLoss,
+      isMonthlyView: true,
+    };
+  };
+
   // Calculate cumulative summary for monthly view (January to selected month inclusive)
   const calculateCumulativeSummary = (): LedgerSummary => {
     if (filter.type !== "month" || !filterMonth || !currentAccount) {
@@ -709,9 +757,12 @@ export default function Index() {
 
     setAppData(updatedAppData);
 
-    // Reset form
+    // Store the last entered date for persistence
+    setLastEnteredDate(formData.date);
+
+    // Reset form but keep the last entered date
     setFormData({
-      date: getCurrentDateString(),
+      date: formData.date,
       bill: "",
       cash: "",
       notes: "",
@@ -908,8 +959,8 @@ export default function Index() {
         // Regular ledger export
         const filteredEntries = getFilteredEntries();
         const summary =
-          filter.type === "month"
-            ? calculateCumulativeSummary()
+          filter.type === "month" && filterMonth
+            ? calculateMonthlySummary(filterMonth)
             : calculateSummary(filteredEntries);
 
         const filterInfo =
@@ -1005,8 +1056,8 @@ export default function Index() {
 
   const filteredEntries = getFilteredEntries();
   const summary =
-    filter.type === "month"
-      ? calculateCumulativeSummary()
+    filter.type === "month" && filterMonth
+      ? calculateMonthlySummary(filterMonth)
       : calculateSummary(filteredEntries);
 
   return (
@@ -1204,6 +1255,22 @@ export default function Index() {
                         className="whitespace-nowrap"
                       >
                         Today
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            date: getCurrentDateString(),
+                          }));
+                          setUseCurrentDate(false);
+                        }}
+                        className="whitespace-nowrap"
+                        title="Set current date"
+                      >
+                        Total
                       </Button>
                     </div>
                   </div>
