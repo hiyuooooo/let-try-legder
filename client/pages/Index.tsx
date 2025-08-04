@@ -320,7 +320,7 @@ export default function Index() {
     }).format(amount);
   };
 
-  const handleSaveEntry = () => {
+  const handleSaveEntry = useCallback(() => {
     if (!currentAccount) return;
 
     const date = parseDateString(formData.date);
@@ -376,7 +376,17 @@ export default function Index() {
     });
     setEditingEntry(null);
     setIsEditDialogOpen(false);
-  };
+  }, [
+    currentAccount,
+    formData,
+    editingEntry,
+    appData,
+    setLastEnteredDate,
+    setFormData,
+    setEditingEntry,
+    setIsEditDialogOpen,
+    setAppData,
+  ]);
 
   // Account management functions
   const createAccount = () => {
@@ -2047,7 +2057,7 @@ export default function Index() {
                   <ul className="text-sm text-blue-700 space-y-1">
                     <li>• Date format must be dd/mm/yyyy</li>
                     <li>• Required columns: Date, Bill, Cash</li>
-                    <li>• Bill and Cash must be positive numbers</li>
+                    <li>��� Bill and Cash must be positive numbers</li>
                     <li>• Notes column is optional</li>
                     <li>• First row should contain column headers</li>
                   </ul>
