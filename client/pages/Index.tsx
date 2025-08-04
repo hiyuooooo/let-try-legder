@@ -2791,18 +2791,13 @@ export default function Index() {
                           month,
                           currentAccount.id,
                         );
-                        const previousTotal = getCumulativeNetTotal(
-                          appData,
-                          year,
-                          month - 1,
-                          currentAccount.id,
-                        );
-                        const cumulativeTotal = getCumulativeNetTotal(
+                        const previousTotal = getAllPreviousMonthsTotal(
                           appData,
                           year,
                           month,
                           currentAccount.id,
                         );
+                        const cumulativeTotal = previousTotal + monthNetTotal;
                         const monthEntries = getCurrentAccountEntries().filter(
                           (entry) =>
                             entry.date.getFullYear() === year &&
