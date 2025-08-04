@@ -127,7 +127,7 @@ export default function Index() {
   const [goodInCartForm, setGoodInCartForm] = useState({
     date: getCurrentDateString(),
     value: "",
-    notes: "गाड़ी में स���मान",
+    notes: "गाड़ी में सामान",
   });
   const [useCurrentDateGIC, setUseCurrentDateGIC] = useState(false);
   const [editingGICEntry, setEditingGICEntry] =
@@ -311,6 +311,20 @@ export default function Index() {
       currency: "INR",
       minimumFractionDigits: 0,
     }).format(amount);
+  };
+
+  // Format number with commas for thousands separation
+  const formatNumberWithCommas = (value: string): string => {
+    // Remove all non-digits
+    const numbers = value.replace(/\D/g, '');
+
+    // Add commas for thousands separation
+    return numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  // Remove commas from formatted number
+  const removeCommas = (value: string): string => {
+    return value.replace(/,/g, '');
   };
 
   const handleSaveEntry = () => {
