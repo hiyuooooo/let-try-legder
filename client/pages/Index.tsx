@@ -220,7 +220,12 @@ export default function Index() {
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       // Handle form field navigation when in Add Entry tab with Ctrl+Arrow
-      if (activeTab === "ledger" && event.ctrlKey && (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) {
+      if (
+        activeTab === "ledger" &&
+        event.ctrlKey &&
+        (event.target instanceof HTMLInputElement ||
+          event.target instanceof HTMLTextAreaElement)
+      ) {
         const formFields = ["date", "bill", "cash", "notes"];
 
         switch (event.key) {
@@ -247,7 +252,10 @@ export default function Index() {
       }
 
       // Global shortcuts when not in form fields
-      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLTextAreaElement
+      ) {
         // Only allow Enter to submit entry in ledger tab
         if (event.key === "Enter" && activeTab === "ledger") {
           event.preventDefault();
@@ -316,23 +324,23 @@ export default function Index() {
   // Format number with commas for thousands separation
   const formatNumberWithCommas = (value: string): string => {
     // Remove all non-digits
-    const numbers = value.replace(/\D/g, '');
+    const numbers = value.replace(/\D/g, "");
 
     // Add commas for thousands separation
-    return numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   // Remove commas from formatted number
   const removeCommas = (value: string): string => {
-    return value.replace(/,/g, '');
+    return value.replace(/,/g, "");
   };
 
   const handleSaveEntry = () => {
     if (!currentAccount) return;
 
     const date = parseDateString(formData.date);
-    const bill = parseFloat(formData.bill.replace(/,/g, '')) || 0;
-    const cash = parseFloat(formData.cash.replace(/,/g, '')) || 0;
+    const bill = parseFloat(formData.bill.replace(/,/g, "")) || 0;
+    const cash = parseFloat(formData.cash.replace(/,/g, "")) || 0;
 
     if (!date) {
       alert("Please enter a valid date in dd/mm/yyyy format");
@@ -1343,7 +1351,7 @@ export default function Index() {
                         value={formData.date}
                         onChange={(e) => {
                           // Only allow numbers and forward slashes for date
-                          const value = e.target.value.replace(/[^0-9/]/g, '');
+                          const value = e.target.value.replace(/[^0-9/]/g, "");
                           setFormData((prev) => ({
                             ...prev,
                             date: value,
@@ -1351,7 +1359,14 @@ export default function Index() {
                         }}
                         onKeyPress={(e) => {
                           // Prevent non-numeric characters except forward slash
-                          if (!/[0-9/]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                          if (
+                            !/[0-9/]/.test(e.key) &&
+                            e.key !== "Backspace" &&
+                            e.key !== "Delete" &&
+                            e.key !== "ArrowLeft" &&
+                            e.key !== "ArrowRight" &&
+                            e.key !== "Tab"
+                          ) {
                             e.preventDefault();
                           }
                         }}
@@ -1383,7 +1398,9 @@ export default function Index() {
                       placeholder="0"
                       value={formData.bill}
                       onChange={(e) => {
-                        const formattedValue = formatNumberWithCommas(e.target.value);
+                        const formattedValue = formatNumberWithCommas(
+                          e.target.value,
+                        );
                         setFormData((prev) => ({
                           ...prev,
                           bill: formattedValue,
@@ -1391,7 +1408,14 @@ export default function Index() {
                       }}
                       onKeyPress={(e) => {
                         // Only allow numbers, backspace, delete, and navigation keys
-                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                        if (
+                          !/[0-9]/.test(e.key) &&
+                          e.key !== "Backspace" &&
+                          e.key !== "Delete" &&
+                          e.key !== "ArrowLeft" &&
+                          e.key !== "ArrowRight" &&
+                          e.key !== "Tab"
+                        ) {
                           e.preventDefault();
                         }
                       }}
@@ -1412,7 +1436,9 @@ export default function Index() {
                       placeholder="0"
                       value={formData.cash}
                       onChange={(e) => {
-                        const formattedValue = formatNumberWithCommas(e.target.value);
+                        const formattedValue = formatNumberWithCommas(
+                          e.target.value,
+                        );
                         setFormData((prev) => ({
                           ...prev,
                           cash: formattedValue,
@@ -1420,7 +1446,14 @@ export default function Index() {
                       }}
                       onKeyPress={(e) => {
                         // Only allow numbers, backspace, delete, and navigation keys
-                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                        if (
+                          !/[0-9]/.test(e.key) &&
+                          e.key !== "Backspace" &&
+                          e.key !== "Delete" &&
+                          e.key !== "ArrowLeft" &&
+                          e.key !== "ArrowRight" &&
+                          e.key !== "Tab"
+                        ) {
                           e.preventDefault();
                         }
                       }}
@@ -3291,19 +3324,26 @@ export default function Index() {
               {/* Shortcuts Info */}
               <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <div>
-                  <h3 className="font-medium text-blue-800">Keyboard Shortcuts Active</h3>
+                  <h3 className="font-medium text-blue-800">
+                    Keyboard Shortcuts Active
+                  </h3>
                   <p className="text-sm text-blue-600">
-                    Use Ctrl+Arrow keys for form navigation and number keys for tab switching
+                    Use Ctrl+Arrow keys for form navigation and number keys for
+                    tab switching
                   </p>
                 </div>
               </div>
 
               {/* Essential Shortcuts */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-gray-800">Essential Keyboard Shortcuts</h3>
+                <h3 className="font-semibold text-gray-800">
+                  Essential Keyboard Shortcuts
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <h4 className="font-medium text-gray-700 mb-2">Tab Navigation</h4>
+                    <h4 className="font-medium text-gray-700 mb-2">
+                      Tab Navigation
+                    </h4>
                     <div className="space-y-1 text-sm text-gray-600">
                       <div className="flex justify-between">
                         <span>Key 1:</span>
@@ -3324,7 +3364,9 @@ export default function Index() {
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <h4 className="font-medium text-gray-700 mb-2">Entry Form (Ledger Tab)</h4>
+                    <h4 className="font-medium text-gray-700 mb-2">
+                      Entry Form (Ledger Tab)
+                    </h4>
                     <div className="space-y-1 text-sm text-gray-600">
                       <div className="flex justify-between">
                         <span>Enter:</span>
@@ -3347,17 +3389,34 @@ export default function Index() {
 
               {/* Usage Instructions */}
               <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <h4 className="font-medium text-yellow-800 mb-2">How to Use Keyboard Shortcuts</h4>
+                <h4 className="font-medium text-yellow-800 mb-2">
+                  How to Use Keyboard Shortcuts
+                </h4>
                 <ul className="text-sm text-yellow-700 space-y-1">
-                  <li>• <strong>Number Keys (1-4):</strong> Jump directly to main tabs</li>
-                  <li>• <strong>Enter Key:</strong> Submit entry when in Ledger tab</li>
-                  <li>• <strong>Ctrl + Arrow Keys (← →):</strong> Navigate between form fields in Ledger</li>
-                  <li>• <strong>Date Field:</strong> Only accepts numbers and "/" character</li>
-                  <li>• <strong>Status:</strong> <span className="text-green-600 font-semibold">Keyboard navigation is ALWAYS ACTIVE</span></li>
+                  <li>
+                    • <strong>Number Keys (1-4):</strong> Jump directly to main
+                    tabs
+                  </li>
+                  <li>
+                    • <strong>Enter Key:</strong> Submit entry when in Ledger
+                    tab
+                  </li>
+                  <li>
+                    • <strong>Ctrl + Arrow Keys (← →):</strong> Navigate between
+                    form fields in Ledger
+                  </li>
+                  <li>
+                    • <strong>Date Field:</strong> Only accepts numbers and "/"
+                    character
+                  </li>
+                  <li>
+                    • <strong>Status:</strong>{" "}
+                    <span className="text-green-600 font-semibold">
+                      Keyboard navigation is ALWAYS ACTIVE
+                    </span>
+                  </li>
                 </ul>
               </div>
-
-
             </CardContent>
           </Card>
         )}
@@ -3401,11 +3460,20 @@ export default function Index() {
                   type="text"
                   value={formData.bill}
                   onChange={(e) => {
-                    const formattedValue = formatNumberWithCommas(e.target.value);
+                    const formattedValue = formatNumberWithCommas(
+                      e.target.value,
+                    );
                     setFormData((prev) => ({ ...prev, bill: formattedValue }));
                   }}
                   onKeyPress={(e) => {
-                    if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                    if (
+                      !/[0-9]/.test(e.key) &&
+                      e.key !== "Backspace" &&
+                      e.key !== "Delete" &&
+                      e.key !== "ArrowLeft" &&
+                      e.key !== "ArrowRight" &&
+                      e.key !== "Tab"
+                    ) {
                       e.preventDefault();
                     }
                   }}
@@ -3419,11 +3487,20 @@ export default function Index() {
                   type="text"
                   value={formData.cash}
                   onChange={(e) => {
-                    const formattedValue = formatNumberWithCommas(e.target.value);
+                    const formattedValue = formatNumberWithCommas(
+                      e.target.value,
+                    );
                     setFormData((prev) => ({ ...prev, cash: formattedValue }));
                   }}
                   onKeyPress={(e) => {
-                    if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                    if (
+                      !/[0-9]/.test(e.key) &&
+                      e.key !== "Backspace" &&
+                      e.key !== "Delete" &&
+                      e.key !== "ArrowLeft" &&
+                      e.key !== "ArrowRight" &&
+                      e.key !== "Tab"
+                    ) {
                       e.preventDefault();
                     }
                   }}
@@ -3449,7 +3526,9 @@ export default function Index() {
                 className={cn(
                   "text-lg font-semibold",
                   formData.bill && formData.cash
-                    ? parseFloat(removeCommas(formData.bill)) - parseFloat(removeCommas(formData.cash)) < 0
+                    ? parseFloat(removeCommas(formData.bill)) -
+                        parseFloat(removeCommas(formData.cash)) <
+                      0
                       ? "text-green-600"
                       : "text-red-600"
                     : "text-gray-500",
@@ -3457,7 +3536,8 @@ export default function Index() {
               >
                 {formData.bill && formData.cash
                   ? formatCurrency(
-                      parseFloat(removeCommas(formData.bill)) - parseFloat(removeCommas(formData.cash)),
+                      parseFloat(removeCommas(formData.bill)) -
+                        parseFloat(removeCommas(formData.cash)),
                     )
                   : "���0"}
               </p>

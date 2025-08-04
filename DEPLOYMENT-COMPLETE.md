@@ -5,20 +5,25 @@ Your Multi-Account Ledger application has been successfully built and packaged! 
 ## 🌐 Web Application (Local Hosting)
 
 ### Option 1: Simple HTTP Server
+
 ```bash
 # Start the local server
 node serve-local.js
 ```
+
 Then open: http://localhost:3000
 
 ### Option 2: Using Python (if available)
+
 ```bash
 cd dist/web
 python3 -m http.server 8000
 ```
+
 Then open: http://localhost:8000
 
 ### Option 3: Using Node.js serve
+
 ```bash
 npx serve dist/web -s -l 3000
 ```
@@ -28,15 +33,17 @@ npx serve dist/web -s -l 3000
 ### Current Available Packages:
 
 #### Linux (Unpacked)
+
 - **Location**: `dist/packages/linux-unpacked/`
 - **Executable**: `Multi-Account Ledger`
-- **Run Command**: 
+- **Run Command**:
   ```bash
   cd "dist/packages/linux-unpacked"
   ./Multi-Account\ Ledger
   ```
 
-#### Windows (Unpacked)  
+#### Windows (Unpacked)
+
 - **Location**: `dist/packages/win-unpacked/`
 - **Executable**: `Multi-Account Ledger.exe`
 - **Run Command**:
@@ -48,6 +55,7 @@ npx serve dist/web -s -l 3000
 ### Quick Launch Scripts:
 
 #### For Linux/Mac:
+
 ```bash
 # Make executable (run once)
 chmod +x launch-electron.sh
@@ -57,6 +65,7 @@ chmod +x launch-electron.sh
 ```
 
 #### For Windows:
+
 ```cmd
 cd "dist/packages/win-unpacked"
 "Multi-Account Ledger.exe"
@@ -65,6 +74,7 @@ cd "dist/packages/win-unpacked"
 ## 📋 Features Available in All Versions:
 
 ✅ **Complete Accounting System**
+
 - Multi-account ledger management
 - Bill and Cash tracking with comma formatting
 - Date validation (dd/mm/yyyy format)
@@ -72,17 +82,20 @@ cd "dist/packages/win-unpacked"
 - Monthly summaries with previous totals
 
 ✅ **Keyboard Shortcuts**
+
 - **1-4**: Switch between tabs
 - **Ctrl + ← →**: Navigate form fields
 - **Enter**: Submit entries
 - Date field accepts only numbers and "/"
 
 ✅ **Data Export**
+
 - Excel export with formatting
 - PDF export (A4/A5)
 - Print functionality
 
 ✅ **Data Management**
+
 - Import from Excel
 - Automatic backups
 - Data validation
@@ -93,16 +106,19 @@ cd "dist/packages/win-unpacked"
 ### Create Installable Packages:
 
 #### Windows Installer (requires Wine on Linux):
+
 ```bash
 npm run dist:win
 ```
 
 #### Linux AppImage/DEB/RPM:
+
 ```bash
 npm run dist:linux
 ```
 
 #### macOS DMG (requires macOS):
+
 ```bash
 npm run dist:mac
 ```
@@ -129,11 +145,13 @@ dist/
 ## 🚀 Quick Start:
 
 ### For Web Version:
+
 1. Run: `node serve-local.js`
 2. Open: http://localhost:3000
 3. Start using the ledger!
 
 ### For Desktop Version:
+
 1. Navigate to appropriate platform folder
 2. Run the executable
 3. Desktop app with full features!
@@ -146,6 +164,7 @@ dist/
 - **Responsive Design**: Works on mobile browsers too
 
 ## 🔒 Security:
+
 - All data stays on your device
 - No external connections required
 - Complete privacy and control
