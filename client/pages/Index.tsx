@@ -228,6 +228,71 @@ export default function Index() {
     }
   }, [useCurrentDateGIC]);
 
+  // Keyboard navigation
+  useEffect(() => {
+    if (!keyboardNavEnabled) return;
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+      // Prevent shortcuts when typing in input fields
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      const tabs = ["ledger", "goodInCart", "reports", "accounts", "import", "backups", "netTotalMonth", "shortcuts"];
+      const currentIndex = tabs.indexOf(activeTab);
+
+      switch (event.key) {
+        case "ArrowLeft":
+          event.preventDefault();
+          if (shortcuts.leftArrow === "prev" && currentIndex > 0) {
+            setActiveTab(tabs[currentIndex - 1] as typeof activeTab);
+          }
+          break;
+        case "ArrowRight":
+          event.preventDefault();
+          if (shortcuts.rightArrow === "next" && currentIndex < tabs.length - 1) {
+            setActiveTab(tabs[currentIndex + 1] as typeof activeTab);
+          }
+          break;
+        case "1":
+          event.preventDefault();
+          setActiveTab(shortcuts.key1 as typeof activeTab);
+          break;
+        case "2":
+          event.preventDefault();
+          setActiveTab(shortcuts.key2 as typeof activeTab);
+          break;
+        case "3":
+          event.preventDefault();
+          setActiveTab(shortcuts.key3 as typeof activeTab);
+          break;
+        case "4":
+          event.preventDefault();
+          setActiveTab(shortcuts.key4 as typeof activeTab);
+          break;
+        case "5":
+          event.preventDefault();
+          setActiveTab(shortcuts.key5 as typeof activeTab);
+          break;
+        case "6":
+          event.preventDefault();
+          setActiveTab(shortcuts.key6 as typeof activeTab);
+          break;
+        case "7":
+          event.preventDefault();
+          setActiveTab(shortcuts.key7 as typeof activeTab);
+          break;
+        case "8":
+          event.preventDefault();
+          setActiveTab(shortcuts.key8 as typeof activeTab);
+          break;
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [keyboardNavEnabled, shortcuts, activeTab]);
+
   // Helper functions
   const formatDateForDisplay = (date: Date): string => {
     return date.toLocaleDateString("en-GB");
@@ -470,7 +535,7 @@ export default function Index() {
       cash: endX,
       total: -endX,
       profitLoss: "Process Complete",
-      notes: "Process Complete - गाड़ी में साम���न",
+      notes: "Process Complete - गाड़ी में सामान",
       isGoodInCart: true,
     });
 
