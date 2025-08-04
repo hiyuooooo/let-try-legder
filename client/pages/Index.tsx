@@ -617,20 +617,11 @@ export default function Index() {
     const netType =
       netProfitLoss < 0 ? "Profit" : netProfitLoss > 0 ? "Loss" : "Break-even";
 
-    // Get previous month's cumulative total (handle year rollover)
-    let prevYear = yearNum;
-    let prevMonth = monthNum - 1;
-
-    // Handle January case - go to December of previous year
-    if (prevMonth < 0) {
-      prevMonth = 11; // December (0-indexed)
-      prevYear = yearNum - 1;
-    }
-
-    const previousTotal = getCumulativeNetTotal(
+    // Get ALL previous months total (across all years)
+    const previousTotal = getAllPreviousMonthsTotal(
       appData,
-      prevYear,
-      prevMonth,
+      yearNum,
+      monthNum,
       currentAccount.id,
     );
 
