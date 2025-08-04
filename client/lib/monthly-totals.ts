@@ -201,12 +201,3 @@ export const cleanupOldMonthlyTotals = (appData: AppData): AppData => {
     monthlyNetTotals: filteredTotals,
   };
 };
-
-// Explicit export to ensure all functions are available
-export {
-  getAllPreviousMonthsTotal,
-  getCumulativeNetTotal,
-  getMonthlyNetTotal,
-  updateAllMonthlyTotalsForAccount,
-  cleanupOldMonthlyTotals,
-};
