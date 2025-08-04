@@ -865,64 +865,6 @@ export default function Index() {
     };
   };
 
-  const handleSaveEntry = () => {
-    if (!currentAccount) return;
-
-    const date = parseDateString(formData.date);
-    const bill = parseFloat(formData.bill) || 0;
-    const cash = parseFloat(formData.cash) || 0;
-
-    if (!date) {
-      alert("Please enter a valid date in dd/mm/yyyy format");
-      return;
-    }
-
-    const { total, profitLoss } = calculateTotal(bill, cash);
-
-    const entry: LedgerEntry = {
-      id: editingEntry?.id || Date.now().toString(),
-      date,
-      bill,
-      cash,
-      total,
-      profitLoss: profitLoss as "Profit" | "Loss" | "",
-      notes: formData.notes,
-      accountId: currentAccount.id,
-    };
-
-    let updatedEntries;
-    if (editingEntry) {
-      updatedEntries = appData.ledgerEntries.map((e) =>
-        e.id === editingEntry.id ? entry : e,
-      );
-    } else {
-      updatedEntries = [...appData.ledgerEntries, entry];
-    }
-
-    // Update app data with new entries and refresh monthly totals cache
-    let updatedAppData = { ...appData, ledgerEntries: updatedEntries };
-    updatedAppData = updateAllMonthlyTotalsForAccount(
-      updatedAppData,
-      currentAccount.id,
-    );
-    updatedAppData = cleanupOldMonthlyTotals(updatedAppData);
-
-    setAppData(updatedAppData);
-
-    // Store the last entered date for persistence
-    setLastEnteredDate(formData.date);
-
-    // Reset form but keep the last entered date
-    setFormData({
-      date: formData.date,
-      bill: "",
-      cash: "",
-      notes: "",
-    });
-    setEditingEntry(null);
-    setIsEditDialogOpen(false);
-  };
-
   const handleEditEntry = (entry: LedgerEntry) => {
     setFormData({
       date: formatDateForDisplay(entry.date),
