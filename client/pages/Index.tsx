@@ -219,11 +219,9 @@ export default function Index() {
 
   // Keyboard navigation
   useEffect(() => {
-    if (!keyboardNavEnabled) return;
-
     const handleKeyPress = (event: KeyboardEvent) => {
-      // Handle form field navigation when in Add Entry tab
-      if (activeTab === "ledger" && (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) {
+      // Handle form field navigation when in Add Entry tab with Ctrl+Arrow
+      if (activeTab === "ledger" && event.ctrlKey && (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) {
         const formFields = ["date", "bill", "cash", "notes"];
 
         switch (event.key) {
@@ -245,17 +243,13 @@ export default function Index() {
               element?.focus();
             }
             break;
-          case "Enter":
-            event.preventDefault();
-            handleSaveEntry();
-            break;
         }
         return;
       }
 
       // Global shortcuts when not in form fields
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
-        // Only allow Enter to submit entry
+        // Only allow Enter to submit entry in ledger tab
         if (event.key === "Enter" && activeTab === "ledger") {
           event.preventDefault();
           handleSaveEntry();
@@ -263,7 +257,7 @@ export default function Index() {
         return;
       }
 
-      // Tab navigation shortcuts
+      // Tab navigation shortcuts (always enabled)
       switch (event.key) {
         case "1":
           event.preventDefault();
@@ -292,7 +286,7 @@ export default function Index() {
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [keyboardNavEnabled, activeTab, formFieldFocus]);
+  }, [activeTab, formFieldFocus]);
 
   // Helper functions
   const formatDateForDisplay = (date: Date): string => {
@@ -3505,7 +3499,7 @@ export default function Index() {
                     notes: e.target.value,
                   }))
                 }
-                placeholder="ग���ड़ी में सामान"
+                placeholder="ग���ड़ी ���ें सामान"
               />
             </div>
             <div className="p-3 bg-gray-50 rounded-md">
