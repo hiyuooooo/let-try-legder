@@ -919,7 +919,7 @@ export default function Index() {
     setGoodInCartForm({
       date: formatDateForDisplay(entry.date),
       value: entry.value.toString(),
-      notes: entry.notes || "गाड़ी में सामा���",
+      notes: entry.notes || "गाड़ी में साम�����",
     });
     setEditingGICEntry(entry);
     setIsGICEditDialogOpen(true);
@@ -1334,6 +1334,7 @@ export default function Index() {
                             date: e.target.value,
                           }))
                         }
+                        onFocus={() => setFormFieldFocus(0)}
                         className="border-blue-200 focus:border-blue-400 focus:ring-blue-200"
                         disabled={useCurrentDate}
                       />
