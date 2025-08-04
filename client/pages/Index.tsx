@@ -114,6 +114,7 @@ export default function Index() {
     | "import"
     | "backups"
     | "netTotalMonth"
+    | "shortcuts"
   >("ledger");
   const [isAccountDialogOpen, setIsAccountDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
