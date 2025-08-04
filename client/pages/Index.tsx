@@ -292,7 +292,7 @@ export default function Index() {
 
     document.addEventListener("keydown", handleKeyPress);
     return () => document.removeEventListener("keydown", handleKeyPress);
-  }, [keyboardNavEnabled, activeTab, formFieldFocus, handleSaveEntry]);
+  }, [keyboardNavEnabled, activeTab, formFieldFocus]);
 
   // Helper functions
   const formatDateForDisplay = (date: Date): string => {
