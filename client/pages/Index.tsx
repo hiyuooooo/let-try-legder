@@ -151,6 +151,21 @@ export default function Index() {
     getCurrentDateString(),
   );
 
+  // Shortcuts state
+  const [keyboardNavEnabled, setKeyboardNavEnabled] = useState(false);
+  const [shortcuts, setShortcuts] = useState({
+    leftArrow: "prev",
+    rightArrow: "next",
+    key1: "ledger",
+    key2: "goodInCart",
+    key3: "reports",
+    key4: "accounts",
+    key5: "import",
+    key6: "backups",
+    key7: "netTotalMonth",
+    key8: "shortcuts"
+  });
+
   // Filter state
   const [filter, setFilter] = useState<FilterOptions>({
     type: "dateRange",
@@ -455,7 +470,7 @@ export default function Index() {
       cash: endX,
       total: -endX,
       profitLoss: "Process Complete",
-      notes: "Process Complete - गाड़ी में सामान",
+      notes: "Process Complete - गाड़ी में साम���न",
       isGoodInCart: true,
     });
 
