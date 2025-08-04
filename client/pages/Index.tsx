@@ -153,18 +153,7 @@ export default function Index() {
 
   // Shortcuts state
   const [keyboardNavEnabled, setKeyboardNavEnabled] = useState(false);
-  const [shortcuts, setShortcuts] = useState({
-    leftArrow: "prev",
-    rightArrow: "next",
-    key1: "ledger",
-    key2: "goodInCart",
-    key3: "reports",
-    key4: "accounts",
-    key5: "import",
-    key6: "backups",
-    key7: "netTotalMonth",
-    key8: "shortcuts"
-  });
+  const [formFieldFocus, setFormFieldFocus] = useState(0); // 0: date, 1: bill, 2: cash, 3: notes
 
   // Filter state
   const [filter, setFilter] = useState<FilterOptions>({
