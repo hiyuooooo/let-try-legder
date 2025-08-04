@@ -3237,6 +3237,160 @@ export default function Index() {
             </CardContent>
           </Card>
         )}
+
+        {/* Shortcuts Tab */}
+        {activeTab === "shortcuts" && (
+          <Card className="bg-white/70 backdrop-blur-sm shadow-xl border-0">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-gray-800">
+                <Settings className="h-5 w-5 text-blue-600" />
+                Keyboard Shortcuts Configuration
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Enable/Disable Shortcuts */}
+              <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div>
+                  <h3 className="font-medium text-blue-800">Enable Keyboard Navigation</h3>
+                  <p className="text-sm text-blue-600">
+                    Use arrow keys and number keys to navigate between tabs
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant={keyboardNavEnabled ? "default" : "outline"}
+                    onClick={() => setKeyboardNavEnabled(!keyboardNavEnabled)}
+                    className={keyboardNavEnabled ? "bg-green-600 hover:bg-green-700" : ""}
+                  >
+                    {keyboardNavEnabled ? "Enabled" : "Disabled"}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Arrow Keys Configuration */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-800">Arrow Key Navigation</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                      <Label className="font-medium">Left Arrow (←)</Label>
+                      <Select
+                        value={shortcuts.leftArrow}
+                        onValueChange={(value) =>
+                          setShortcuts((prev) => ({ ...prev, leftArrow: value }))
+                        }
+                      >
+                        <SelectTrigger className="w-32">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="prev">Previous Tab</SelectItem>
+                          <SelectItem value="disabled">Disabled</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                      <Label className="font-medium">Right Arrow (→)</Label>
+                      <Select
+                        value={shortcuts.rightArrow}
+                        onValueChange={(value) =>
+                          setShortcuts((prev) => ({ ...prev, rightArrow: value }))
+                        }
+                      >
+                        <SelectTrigger className="w-32">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="next">Next Tab</SelectItem>
+                          <SelectItem value="disabled">Disabled</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Number Keys Configuration */}
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-800">Number Key Shortcuts</h3>
+                  <div className="space-y-2">
+                    {[
+                      { key: "key1", label: "Key 1", default: "ledger" },
+                      { key: "key2", label: "Key 2", default: "goodInCart" },
+                      { key: "key3", label: "Key 3", default: "reports" },
+                      { key: "key4", label: "Key 4", default: "accounts" },
+                      { key: "key5", label: "Key 5", default: "import" },
+                      { key: "key6", label: "Key 6", default: "backups" },
+                      { key: "key7", label: "Key 7", default: "netTotalMonth" },
+                      { key: "key8", label: "Key 8", default: "shortcuts" }
+                    ].map(({ key, label }) => (
+                      <div key={key} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
+                        <Label className="text-sm font-medium">{label}</Label>
+                        <Select
+                          value={shortcuts[key as keyof typeof shortcuts]}
+                          onValueChange={(value) =>
+                            setShortcuts((prev) => ({ ...prev, [key]: value }))
+                          }
+                        >
+                          <SelectTrigger className="w-36">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="ledger">Ledger</SelectItem>
+                            <SelectItem value="goodInCart">Good in Cart</SelectItem>
+                            <SelectItem value="reports">Reports</SelectItem>
+                            <SelectItem value="accounts">Accounts</SelectItem>
+                            <SelectItem value="import">Import</SelectItem>
+                            <SelectItem value="backups">Backups</SelectItem>
+                            <SelectItem value="netTotalMonth">Net Total Month</SelectItem>
+                            <SelectItem value="shortcuts">Shortcuts</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Usage Instructions */}
+              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <h4 className="font-medium text-yellow-800 mb-2">How to Use Keyboard Shortcuts</h4>
+                <ul className="text-sm text-yellow-700 space-y-1">
+                  <li>• <strong>Arrow Keys:</strong> Navigate between tabs sequentially</li>
+                  <li>• <strong>Number Keys (1-8):</strong> Jump directly to configured tabs</li>
+                  <li>• <strong>Note:</strong> Shortcuts are disabled when typing in input fields</li>
+                  <li>• <strong>Status:</strong> {keyboardNavEnabled ?
+                    <span className="text-green-600 font-semibold">Keyboard navigation is ACTIVE</span> :
+                    <span className="text-red-600 font-semibold">Keyboard navigation is DISABLED</span>}
+                  </li>
+                </ul>
+              </div>
+
+              {/* Reset to Defaults */}
+              <div className="flex justify-center pt-4 border-t border-gray-200">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShortcuts({
+                      leftArrow: "prev",
+                      rightArrow: "next",
+                      key1: "ledger",
+                      key2: "goodInCart",
+                      key3: "reports",
+                      key4: "accounts",
+                      key5: "import",
+                      key6: "backups",
+                      key7: "netTotalMonth",
+                      key8: "shortcuts"
+                    });
+                  }}
+                  className="border-gray-300"
+                >
+                  Reset to Defaults
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
 
       {/* Edit Entry Dialog */}
