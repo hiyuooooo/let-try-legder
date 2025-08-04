@@ -994,7 +994,7 @@ export default function Index() {
           total: row.total,
           profitLoss:
             row.profitLoss === "Good in Cart"
-              ? "गाड़ी में सा���ान"
+              ? "गाड़ी में सामान"
               : row.profitLoss === "Process Complete"
                 ? "Process Complete"
                 : row.profitLoss,
@@ -3298,11 +3298,14 @@ export default function Index() {
                         <span className="font-mono">Submit Entry</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>← →:</span>
+                        <span>Ctrl + ← →:</span>
                         <span className="font-mono">Navigate Fields</span>
                       </div>
                       <div className="text-xs text-gray-500 mt-2">
                         Field Order: Date → Bill → Cash → Notes
+                      </div>
+                      <div className="text-xs text-blue-600 mt-1">
+                        Date field: Only numbers and "/" allowed
                       </div>
                     </div>
                   </div>
