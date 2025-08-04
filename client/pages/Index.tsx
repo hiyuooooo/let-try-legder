@@ -3457,7 +3457,7 @@ export default function Index() {
               >
                 {formData.bill && formData.cash
                   ? formatCurrency(
-                      parseFloat(formData.bill) - parseFloat(formData.cash),
+                      parseFloat(removeCommas(formData.bill)) - parseFloat(removeCommas(formData.cash)),
                     )
                   : "��0"}
               </p>
