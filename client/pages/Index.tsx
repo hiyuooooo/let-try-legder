@@ -1344,36 +1344,88 @@ export default function Index() {
                       Date (dd/mm/yyyy)
                     </Label>
                     <div className="flex gap-2">
-                      <Input
-                        id="date"
-                        type="text"
-                        placeholder="25/01/2024"
-                        value={formData.date}
-                        onChange={(e) => {
-                          // Only allow numbers and forward slashes for date
-                          const value = e.target.value.replace(/[^0-9/]/g, "");
-                          setFormData((prev) => ({
-                            ...prev,
-                            date: value,
-                          }));
-                        }}
-                        onKeyPress={(e) => {
-                          // Prevent non-numeric characters except forward slash
-                          if (
-                            !/[0-9/]/.test(e.key) &&
-                            e.key !== "Backspace" &&
-                            e.key !== "Delete" &&
-                            e.key !== "ArrowLeft" &&
-                            e.key !== "ArrowRight" &&
-                            e.key !== "Tab"
-                          ) {
-                            e.preventDefault();
-                          }
-                        }}
-                        onFocus={() => setFormFieldFocus(0)}
-                        className="border-blue-200 focus:border-blue-400 focus:ring-blue-200"
-                        disabled={useCurrentDate}
-                      />
+                      <div className="relative flex-1">
+                        <Input
+                          id="date"
+                          type="text"
+                          placeholder="25/01/2024"
+                          value={formData.date}
+                          onChange={(e) => {
+                            // Only allow numbers and forward slashes for date
+                            const value = e.target.value.replace(/[^0-9/]/g, "");
+                            setFormData((prev) => ({
+                              ...prev,
+                              date: value,
+                            }));
+                          }}
+                          onKeyPress={(e) => {
+                            // Prevent non-numeric characters except forward slash
+                            if (
+                              !/[0-9/]/.test(e.key) &&
+                              e.key !== "Backspace" &&
+                              e.key !== "Delete" &&
+                              e.key !== "ArrowLeft" &&
+                              e.key !== "ArrowRight" &&
+                              e.key !== "Tab"
+                            ) {
+                              e.preventDefault();
+                            }
+                          }}
+                          onFocus={() => setFormFieldFocus(0)}
+                          className="border-blue-200 focus:border-blue-400 focus:ring-blue-200 pr-8"
+                          disabled={useCurrentDate}
+                        />
+                        <div className="absolute right-1 top-1/2 transform -translate-y-1/2 flex flex-col">
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              if (!useCurrentDate) {
+                                const currentDate = parseDateString(formData.date);
+                                if (currentDate) {
+                                  const newDate = new Date(currentDate);
+                                  newDate.setDate(newDate.getDate() + 1);
+                                  setFormData((prev) => ({
+                                    ...prev,
+                                    date: formatDateForDisplay(newDate),
+                                  }));
+                                }
+                              }
+                            }}
+                            className="h-4 w-6 p-0 hover:bg-blue-50"
+                            disabled={useCurrentDate}
+                          >
+                            <svg className="h-3 w-3 text-blue-600" fill="currentColor" viewBox="0 0 12 12">
+                              <path d="M6 3l3 3H3l3-3z"/>
+                            </svg>
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              if (!useCurrentDate) {
+                                const currentDate = parseDateString(formData.date);
+                                if (currentDate) {
+                                  const newDate = new Date(currentDate);
+                                  newDate.setDate(newDate.getDate() - 1);
+                                  setFormData((prev) => ({
+                                    ...prev,
+                                    date: formatDateForDisplay(newDate),
+                                  }));
+                                }
+                              }
+                            }}
+                            className="h-4 w-6 p-0 hover:bg-blue-50"
+                            disabled={useCurrentDate}
+                          >
+                            <svg className="h-3 w-3 text-blue-600" fill="currentColor" viewBox="0 0 12 12">
+                              <path d="M6 9L3 6h6l-3 3z"/>
+                            </svg>
+                          </Button>
+                        </div>
+                      </div>
                       <Button
                         type="button"
                         variant={useCurrentDate ? "default" : "outline"}
