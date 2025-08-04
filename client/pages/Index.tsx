@@ -869,8 +869,8 @@ export default function Index() {
   const handleEditEntry = (entry: LedgerEntry) => {
     setFormData({
       date: formatDateForDisplay(entry.date),
-      bill: entry.bill.toString(),
-      cash: entry.cash.toString(),
+      bill: formatNumberWithCommas(entry.bill.toString()),
+      cash: formatNumberWithCommas(entry.cash.toString()),
       notes: entry.notes || "",
     });
     setEditingEntry(entry);
@@ -3459,7 +3459,7 @@ export default function Index() {
                   ? formatCurrency(
                       parseFloat(removeCommas(formData.bill)) - parseFloat(removeCommas(formData.cash)),
                     )
-                  : "��0"}
+                  : "���0"}
               </p>
             </div>
           </div>
