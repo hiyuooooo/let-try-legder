@@ -754,9 +754,12 @@ export default function Index() {
 
     setAppData(updatedAppData);
 
-    // Reset form
+    // Store the last entered date for persistence
+    setLastEnteredDate(formData.date);
+
+    // Reset form but keep the last entered date
     setFormData({
-      date: getCurrentDateString(),
+      date: formData.date,
       bill: "",
       cash: "",
       notes: "",
@@ -2653,7 +2656,7 @@ export default function Index() {
                               <TableCell className="text-center">
                                 {row.profitLoss === "Good in Cart" ? (
                                   <Badge className="bg-blue-100 text-blue-800 border-blue-200 italic">
-                                    गाड़ी ��ें सामान
+                                    गाड़ी में सामान
                                   </Badge>
                                 ) : row.profitLoss === "Profit" ? (
                                   <Badge className="bg-green-100 text-green-800 border-green-200">
