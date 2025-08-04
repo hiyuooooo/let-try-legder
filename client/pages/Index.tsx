@@ -127,7 +127,7 @@ export default function Index() {
   const [goodInCartForm, setGoodInCartForm] = useState({
     date: getCurrentDateString(),
     value: "",
-    notes: "गाड़ी में सामान",
+    notes: "गाड़ी में स���मान",
   });
   const [useCurrentDateGIC, setUseCurrentDateGIC] = useState(false);
   const [editingGICEntry, setEditingGICEntry] =
@@ -317,11 +317,17 @@ export default function Index() {
     if (!currentAccount) return;
 
     const date = parseDateString(formData.date);
-    const bill = parseFloat(formData.bill) || 0;
-    const cash = parseFloat(formData.cash) || 0;
+    const bill = parseFloat(formData.bill.replace(/,/g, '')) || 0;
+    const cash = parseFloat(formData.cash.replace(/,/g, '')) || 0;
 
     if (!date) {
       alert("Please enter a valid date in dd/mm/yyyy format");
+      return;
+    }
+
+    // Validate that at least one of bill or cash has a value
+    if (bill === 0 && cash === 0) {
+      alert("Please enter a value for Bill Amount or Cash Amount");
       return;
     }
 
