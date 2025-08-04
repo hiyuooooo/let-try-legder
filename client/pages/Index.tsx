@@ -3398,11 +3398,17 @@ export default function Index() {
                 <Label htmlFor="editBill">Bill Amount</Label>
                 <Input
                   id="editBill"
-                  type="number"
+                  type="text"
                   value={formData.bill}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, bill: e.target.value }))
-                  }
+                  onChange={(e) => {
+                    const formattedValue = formatNumberWithCommas(e.target.value);
+                    setFormData((prev) => ({ ...prev, bill: formattedValue }));
+                  }}
+                  onKeyPress={(e) => {
+                    if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                      e.preventDefault();
+                    }
+                  }}
                   placeholder="0"
                 />
               </div>
