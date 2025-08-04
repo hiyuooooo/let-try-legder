@@ -1,19 +1,20 @@
 #!/bin/bash
-echo "🚀 Starting Multi-Account Ledger Desktop App..."
-echo ""
-echo "Build complete! Your desktop app is ready."
-echo ""
-echo "📁 App Location: dist/packages/linux-unpacked/"
-echo ""
-echo "To run your desktop app:"
-echo "1. Navigate to: cd dist/packages/linux-unpacked/"
-echo "2. Run: ./fusion-starter"
-echo ""
-echo "🎯 Features included:"
-echo "• Complete Multi-Account Ledger functionality"
-echo "• PDF & Excel export capabilities"
-echo "• Local data storage"
-echo "• Native desktop menus and shortcuts"
-echo ""
-echo "Starting the app now..."
-cd dist/packages/linux-unpacked && ./fusion-starter
+
+echo "🖥️  Multi-Account Ledger - Electron Desktop App"
+echo "=================================================="
+
+# Check if Linux unpacked version exists
+if [ -d "dist/packages/linux-unpacked" ]; then
+    echo "✅ Linux Electron app found"
+    echo "🚀 Launching Multi-Account Ledger..."
+    cd "dist/packages/linux-unpacked"
+    ./"Multi-Account Ledger"
+elif [ -d "dist/packages/win-unpacked" ]; then
+    echo "✅ Windows Electron app found"
+    echo "🚀 Launching Multi-Account Ledger..."
+    cd "dist/packages/win-unpacked"
+    ./"Multi-Account Ledger.exe"
+else
+    echo "❌ No Electron app found. Please run: npm run pack"
+    exit 1
+fi
