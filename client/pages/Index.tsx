@@ -3318,12 +3318,9 @@ export default function Index() {
                 <ul className="text-sm text-yellow-700 space-y-1">
                   <li>• <strong>Number Keys (1-4):</strong> Jump directly to main tabs</li>
                   <li>• <strong>Enter Key:</strong> Submit entry when in Ledger tab</li>
-                  <li>• <strong>Arrow Keys (← →):</strong> Navigate between form fields in Ledger</li>
-                  <li>• <strong>Auto-disable:</strong> Form navigation only works in entry fields</li>
-                  <li>• <strong>Status:</strong> {keyboardNavEnabled ?
-                    <span className="text-green-600 font-semibold">Keyboard navigation is ACTIVE</span> :
-                    <span className="text-red-600 font-semibold">Keyboard navigation is DISABLED</span>}
-                  </li>
+                  <li>• <strong>Ctrl + Arrow Keys (← →):</strong> Navigate between form fields in Ledger</li>
+                  <li>• <strong>Date Field:</strong> Only accepts numbers and "/" character</li>
+                  <li>• <strong>Status:</strong> <span className="text-green-600 font-semibold">Keyboard navigation is ALWAYS ACTIVE</span></li>
                 </ul>
               </div>
 
