@@ -3331,29 +3331,7 @@ export default function Index() {
                 </ul>
               </div>
 
-              {/* Reset to Defaults */}
-              <div className="flex justify-center pt-4 border-t border-gray-200">
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setShortcuts({
-                      leftArrow: "prev",
-                      rightArrow: "next",
-                      key1: "ledger",
-                      key2: "goodInCart",
-                      key3: "reports",
-                      key4: "accounts",
-                      key5: "import",
-                      key6: "backups",
-                      key7: "netTotalMonth",
-                      key8: "shortcuts"
-                    });
-                  }}
-                  className="border-gray-300"
-                >
-                  Reset to Defaults
-                </Button>
-              </div>
+
             </CardContent>
           </Card>
         )}
