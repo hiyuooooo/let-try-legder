@@ -1435,6 +1435,7 @@ export default function Index() {
                         notes: e.target.value,
                       }))
                     }
+                    onFocus={() => setFormFieldFocus(3)}
                     className="border-blue-200 focus:border-blue-400 focus:ring-blue-200 resize-none"
                     rows={2}
                   />
