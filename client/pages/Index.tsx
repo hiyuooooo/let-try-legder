@@ -3416,11 +3416,17 @@ export default function Index() {
                 <Label htmlFor="editCash">Cash Amount</Label>
                 <Input
                   id="editCash"
-                  type="number"
+                  type="text"
                   value={formData.cash}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, cash: e.target.value }))
-                  }
+                  onChange={(e) => {
+                    const formattedValue = formatNumberWithCommas(e.target.value);
+                    setFormData((prev) => ({ ...prev, cash: formattedValue }));
+                  }}
+                  onKeyPress={(e) => {
+                    if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Tab') {
+                      e.preventDefault();
+                    }
+                  }}
                   placeholder="0"
                 />
               </div>
